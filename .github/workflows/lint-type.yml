@@ -1,4 +1,4 @@
-name: Type test
+name: Lint type
 
 on:
   push:

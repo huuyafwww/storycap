@@ -1,0 +1,32 @@
+name: Lint Code
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: ./.github/actions/setup/pnpm
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Setup ESLint cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            packages/storycapture/.eslintcache
+            packages/storyscanner/.eslintcache
+          key: ${{ runner.os }}-eslint-cache-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-eslint-cache-
+
+      - name: Lint Code
+        run: pnpm run lint:code
