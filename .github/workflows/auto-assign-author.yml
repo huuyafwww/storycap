@@ -1,0 +1,13 @@
+name: Auto Assign Author
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  assign-author:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: kentaro-m/auto-assign-action@v2.0.0
+        with:
+          configuration-path: .github/auto_assign.yml

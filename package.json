@@ -45,6 +45,8 @@
     "unlinkall": "lerna exec --parallel --bail=false yarn unlink"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.5",
     "@huuyafwww/eslint-config-yaml": "^1.0.0",
     "@huuyafwww/tsconfig-common": "^1.1.3",
     "@praha/eslint-config-definer": "^2.0.1",
