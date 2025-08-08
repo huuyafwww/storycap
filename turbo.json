@@ -4,6 +4,10 @@
     "signature": true
   },
   "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
     "clean": {
       "cache": false
     },

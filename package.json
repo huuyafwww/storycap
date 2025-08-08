@@ -19,7 +19,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build && yarn doc && yarn copy:misc",
+    "build": "turbo run build --parallel && yarn doc && yarn copy:misc",
     "build:pages": "yarn typedoc:build",
     "clean": "turbo run clean && pnpm run clean:self",
     "clean:self": "rimraf node_modules .turbo",
@@ -72,5 +72,6 @@
     "turbo": "^2.5.5",
     "typescript": "^5.9.2",
     "typescript-eslint-language-service": "5.0.5"
-  }
+  },
+  "packageManager": "pnpm@10.9.0"
 }

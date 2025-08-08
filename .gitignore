@@ -87,3 +87,11 @@ __screenshots__
 .reg
 
 storybook-static/
+
+
+# Turborepo
+.turbo
+
+# Output
+dist
+.eslintcache
