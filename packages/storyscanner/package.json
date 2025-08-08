@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "clean": "rimraf -g lib \"*.tsbuildinfo\"",
+    "clean": "rimraf node_modules dist .turbo lib \"*.tsbuildinfo\"",
     "jest": "jest",
     "test": "npm run jest",
     "typedoc": "typedoc --out \"../../dist-pages/typedoc/storyscanner\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
