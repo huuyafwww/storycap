@@ -1,42 +1,47 @@
 {
   "name": "storycapture-root",
+  "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "clean": "lerna run clean",
-    "bootstrap": "lerna bootstrap",
-    "doc:clihelp": "node scripts/cli-help.js",
-    "doc:toc": "node scripts/add-toc.js",
-    "doc": "yarn doc:clihelp && yarn doc:toc && prettier --write \"*.md\" --loglevel warn",
-    "typedoc:build": "lerna run typedoc",
-    "copy:misc": "yarn copy:misc:storycapture",
-    "copy:misc:storycapture": "cpy README.md CONTRIBUTING.md MIGRATION.md LICENSE packages/storycapture",
-    "build": "lerna run build && yarn doc && yarn copy:misc",
-    "build:pages": "yarn typedoc:build",
-    "format": "prettier --write \"packages/**/src/**/*\" \"packages/**/samples/**/*.ts\" \"scripts/**/*\" \"*.md\" \"packages/*/*.md\"",
-    "format:check": "prettier --check \"packages/**/src/**/*\" \"packages/**/samples/**/*.ts\" \"scripts/**/*\"",
-    "lint": "eslint \"packages/**/src/**/*.ts\"",
-    "test": "lerna run test",
-    "e2e": "bash e2e.sh",
-    "regression": "reg-suit run",
-    "deploy:ci": "lerna run clean && yarn build && lerna publish --yes from-package --dist-tag \"$(node ./scripts/get-dist-tag.js)\"",
-    "deploy:manual": "lerna run clean && yarn build && lerna publish",
-    "deploy:pages": "gh-pages -d dist-pages -m \"[ci skip]\"",
-    "linkall": "lerna exec --parallel yarn link",
-    "unlinkall": "lerna exec --parallel --bail=false yarn unlink"
+  "homepage": "https://github.com/huuyafwww/storycapture#readme",
+  "bugs": {
+    "url": "https://github.com/huuyafwww/storycapture/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huuyafwww/storycapture.git"
   },
+  "license": "MIT",
   "author": "tsuyoshiwada",
   "contributors": [
     "Yosuke Kurami"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/huuyafwww/storycapture/issues"
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build && yarn doc && yarn copy:misc",
+    "build:pages": "yarn typedoc:build",
+    "clean": "lerna run clean",
+    "copy:misc": "yarn copy:misc:storycapture",
+    "copy:misc:storycapture": "cpy README.md CONTRIBUTING.md MIGRATION.md LICENSE packages/storycapture",
+    "deploy:ci": "lerna run clean && yarn build && lerna publish --yes from-package --dist-tag \"$(node ./scripts/get-dist-tag.js)\"",
+    "deploy:manual": "lerna run clean && yarn build && lerna publish",
+    "deploy:pages": "gh-pages -d dist-pages -m \"[ci skip]\"",
+    "doc": "yarn doc:clihelp && yarn doc:toc && prettier --write \"*.md\" --loglevel warn",
+    "doc:clihelp": "node scripts/cli-help.js",
+    "doc:toc": "node scripts/add-toc.js",
+    "e2e": "bash e2e.sh",
+    "format": "prettier --write \"packages/**/src/**/*\" \"packages/**/samples/**/*.ts\" \"scripts/**/*\" \"*.md\" \"packages/*/*.md\"",
+    "format:check": "prettier --check \"packages/**/src/**/*\" \"packages/**/samples/**/*.ts\" \"scripts/**/*\"",
+    "linkall": "lerna exec --parallel yarn link",
+    "lint": "eslint \"packages/**/src/**/*.ts\"",
+    "regression": "reg-suit run",
+    "sort:package": "sort-package-json 'package.json' 'packages/*/package.json'",
+    "test": "lerna run test",
+    "typedoc:build": "lerna run typedoc",
+    "unlinkall": "lerna exec --parallel --bail=false yarn unlink"
   },
-  "homepage": "https://github.com/huuyafwww/storycapture#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "8.19.1",
     "@typescript-eslint/parser": "8.19.1",
@@ -47,6 +52,7 @@
     "eslint-config-prettier": "8.10.0",
     "gh-pages": "6.3.0",
     "husky": "9.1.7",
+    "lefthook": "^1.12.2",
     "lerna": "4.0.0",
     "markdown-toc": "1.2.0",
     "prettier": "3.4.2",
@@ -55,12 +61,9 @@
     "reg-notify-github-plugin": "0.14.3",
     "reg-publish-s3-plugin": "0.14.3",
     "reg-suit": "0.14.3",
+    "sort-package-json": "^2.15.1",
+    "turbo": "^2.5.5",
     "typescript": "5.7.3",
-    "typescript-eslint-language-service": "5.0.5",
-    "turbo": "^2.5.5"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "version": "0.0.0"
+    "typescript-eslint-language-service": "5.0.5"
+  }
 }

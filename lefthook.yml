@@ -1,0 +1,9 @@
+assert_lefthook_installed: true
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: Sort package.json
+      run: pnpm run sort:package
+      glob: '{package.json,**/package.json}'
+      stage_fixed: true

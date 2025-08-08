@@ -2,61 +2,6 @@
   "name": "storycapture",
   "version": "9.0.0",
   "description": "A Storybook addon, Save the screenshot image of your stories! via puppeteer.",
-  "engines": {
-    "node": ">=20"
-  },
-  "main": "lib/index.js",
-  "module": "lib-esm/index.js",
-  "exports": {
-    ".": {
-      "require": "./lib/index.js",
-      "browser": "./lib-esm/index.js",
-      "import": "./lib-esm/index.js",
-      "default": "./lib/index.js"
-    },
-    "./register": "./register.js"
-  },
-  "sideEffects": [
-    "./register.js",
-    "./lib/client/register.js",
-    "./lib-esm/client/register.js"
-  ],
-  "typings": "lib/index.d.ts",
-  "bin": {
-    "storycapture": "lib/node/cli.js"
-  },
-  "scripts": {
-    "clean": "rimraf -g lib lib-esm \"*.tsbuildinfo\"",
-    "build": "yarn build:cjs && yarn build:esm",
-    "build:cjs": "tsc --p tsconfig.build.cjs.json",
-    "build:esm": "tsc --p tsconfig.build.esm.json",
-    "test": "jest",
-    "typedoc": "typedoc --out \"../../dist-pages/typedoc/storycapture\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/huuyafwww/storycapture.git"
-  },
-  "author": "tsuyoshiwada",
-  "contributors": [
-    "Yosuke Kurami"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/huuyafwww/storycapture/issues"
-  },
-  "homepage": "https://github.com/huuyafwww/storycapture#readme",
-  "files": [
-    "lib",
-    "lib-esm",
-    "assets",
-    "CONTRIBUTING.md",
-    "MIGRATION.md",
-    "README.md",
-    "LICENSE",
-    "package.json",
-    "register.js"
-  ],
   "keywords": [
     "storybook",
     "addon",
@@ -69,6 +14,96 @@
     "testing",
     "test"
   ],
+  "homepage": "https://github.com/huuyafwww/storycapture#readme",
+  "bugs": {
+    "url": "https://github.com/huuyafwww/storycapture/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huuyafwww/storycapture.git"
+  },
+  "license": "MIT",
+  "author": "tsuyoshiwada",
+  "contributors": [
+    "Yosuke Kurami"
+  ],
+  "sideEffects": [
+    "./register.js",
+    "./lib/client/register.js",
+    "./lib-esm/client/register.js"
+  ],
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "browser": "./lib-esm/index.js",
+      "import": "./lib-esm/index.js",
+      "default": "./lib/index.js"
+    },
+    "./register": "./register.js"
+  },
+  "main": "lib/index.js",
+  "module": "lib-esm/index.js",
+  "typings": "lib/index.d.ts",
+  "bin": {
+    "storycapture": "lib/node/cli.js"
+  },
+  "files": [
+    "lib",
+    "lib-esm",
+    "assets",
+    "CONTRIBUTING.md",
+    "MIGRATION.md",
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "register.js"
+  ],
+  "scripts": {
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc --p tsconfig.build.cjs.json",
+    "build:esm": "tsc --p tsconfig.build.esm.json",
+    "clean": "rimraf -g lib lib-esm \"*.tsbuildinfo\"",
+    "test": "jest",
+    "typedoc": "typedoc --out \"../../dist-pages/typedoc/storycapture\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testEnvironmentOptions": {
+      "url": "http://localhost"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx)",
+      "**/*.test.(ts|tsx)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "_old/.*",
+      "examples/.*",
+      "\\.d\\.ts$",
+      "lib/.*"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "diagnostics": false
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "mkdirp": "^3.0.0",
+    "nanomatch": "^1.2.13",
+    "puppeteer-core": "^9.0.0",
+    "rimraf": "^6.0.0",
+    "sanitize-filename": "^1.6.3",
+    "storycrawler": "^5.0.1",
+    "yargs": "^17.0.0"
+  },
   "devDependencies": {
     "@types/jest": "29.5.14",
     "@types/mkdirp": "^2.0.0",
@@ -82,45 +117,10 @@
     "typedoc": "0.27.6",
     "typescript": "5.7.3"
   },
-  "dependencies": {
-    "mkdirp": "^3.0.0",
-    "nanomatch": "^1.2.13",
-    "puppeteer-core": "^9.0.0",
-    "rimraf": "^6.0.0",
-    "sanitize-filename": "^1.6.3",
-    "storycrawler": "^5.0.1",
-    "yargs": "^17.0.0"
-  },
   "peerDependencies": {
     "storybook": "^9.0.0"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": [
-        "ts-jest",
-        {
-          "diagnostics": false
-        }
-      ]
-    },
-    "testMatch": [
-      "**/__tests__/*.(ts|tsx)",
-      "**/*.test.(ts|tsx)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "_old/.*",
-      "examples/.*",
-      "\\.d\\.ts$",
-      "lib/.*"
-    ],
-    "testEnvironmentOptions": {
-      "url": "http://localhost"
-    }
+  "engines": {
+    "node": ">=20"
   }
 }
