@@ -111,9 +111,6 @@ importers:
       '@testing-library/react':
         specifier: ^14.0.0
         version: 14.3.1(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.0.1
       storybook:
         specifier: ^9.1.1
         version: 9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.1(@types/node@24.2.0)(jiti@2.5.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.1))
@@ -181,9 +178,6 @@ importers:
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.0.1
       storybook:
         specifier: ^9.1.1
         version: 9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@5.4.19(@types/node@24.2.0)(terser@5.43.1))
@@ -239,9 +233,6 @@ importers:
       '@testing-library/react':
         specifier: ^14.0.0
         version: 14.3.1(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.0.1
       storybook:
         specifier: ^9.1.1
         version: 9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.1(@types/node@24.2.0)(jiti@2.5.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.1))
