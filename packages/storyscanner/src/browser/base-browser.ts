@@ -1,8 +1,9 @@
-import type { Browser as PuppeteerBrowser, Page, LaunchOptions, BrowserLaunchArgumentOptions } from 'puppeteer-core';
 import { sleep } from '../async-utils';
-import { findChrome } from '../find-chrome';
 import { ChromiumNotFoundError } from '../errors';
-import { ChromeChannel } from '../types';
+import { findChrome } from '../find-chrome';
+
+import type { ChromeChannel } from '../types';
+import type { Browser as PuppeteerBrowser, Page, LaunchOptions, BrowserLaunchArgumentOptions } from 'puppeteer-core';
 
 function getPuppeteer() {
   const pc = require('puppeteer-core') as typeof import('puppeteer-core');
@@ -106,7 +107,8 @@ export abstract class BaseBrowser {
       await this._page.close();
       await sleep(50);
       await this.browser.close();
-    } catch (e) {
+    }
+    catch (e) {
       // nothing to do
     }
   }
@@ -141,7 +143,6 @@ export abstract class BaseBrowser {
    **/
   protected async waitForDebugInput() {
     if (this.opt.launchOptions && this.opt.launchOptions.headless === false) {
-      // eslint-disable-next-line no-console
       console.log(
         'story-crawler waits for your input. Open Puppeteer devtool console and exec "nextStep()" to go to the next step.',
       );

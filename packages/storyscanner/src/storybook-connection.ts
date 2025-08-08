@@ -1,5 +1,7 @@
 import * as cp from 'child_process';
+
 import waitOn = require('wait-on');
+
 import { StorybookServerTimeoutError, InvalidUrlError } from './errors';
 import { Logger } from './logger';
 
@@ -9,7 +11,7 @@ function waitServer(url: string, timeout: number) {
   }
   const resource = url.startsWith('https') ? url.replace(/^https/, 'https-get') : url.replace(/^http/, 'http-get');
   return new Promise<void>((resolve, reject) => {
-    waitOn({ resources: [resource], timeout }, err => {
+    waitOn({ resources: [resource], timeout }, (err) => {
       if (err) {
         if (err.message === 'Timeout') {
           return reject(new StorybookServerTimeoutError(timeout));
@@ -114,7 +116,8 @@ export class StorybookConnection {
     await waitServer(this.opt.storybookUrl, this.opt.serverTimeout || 10_000);
     if (this.opt.serverCmd) {
       this.logger.debug('Storybook server started');
-    } else {
+    }
+    else {
       this.logger.debug('Found Storybook server');
     }
     this._status = 'CONNECTED';
@@ -134,7 +137,8 @@ export class StorybookConnection {
     try {
       this.logger.debug('Shutdown storybook server', this.proc.pid);
       this.proc.kill('SIGINT');
-    } catch (e) {
+    }
+    catch (e) {
       // nothing todo
     }
     this._status = 'DISCONNECTED';

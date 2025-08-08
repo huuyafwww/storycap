@@ -49,7 +49,7 @@ export class ResourceWatcher {
       if (!metadata) return;
       metadata.resolve();
     };
-    this.page.on('request', request => {
+    this.page.on('request', (request) => {
       const url = request.url();
       if (request.method() !== 'GET') return;
       // Ignore the following resource types because they might create HTTP request never completed
@@ -101,7 +101,7 @@ export class ResourceWatcher {
       urls
         .map(url => this.resolvedAssetsMap.get(url))
         .filter(m => !!m)
-        .map(m => m!.resolved),
+        .map(m => m.resolved),
     );
     return urls;
   }

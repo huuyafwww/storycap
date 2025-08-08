@@ -21,7 +21,7 @@ import {
 
   try {
     // `createExecutionService` creates a queue of the tasks for each story.
-    const service = createExecutionService(workers, stories, story => async worker => {
+    const service = createExecutionService(workers, stories, story => async (worker) => {
       // Display story in the worker's preview window
       await worker.setCurrentStory(story);
 
@@ -39,7 +39,8 @@ import {
     const results = await service.execute();
 
     results.forEach(({ story, nodesCount }) => console.log(`${story.id}: ${nodesCount}`));
-  } finally {
+  }
+  finally {
     await storiesBrowser.close();
     await Promise.all(workers.map(worker => worker.close()));
     await connection.disconnect();

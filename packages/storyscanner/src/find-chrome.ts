@@ -1,7 +1,8 @@
+import { execSync, execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { execSync, execFileSync } from 'child_process';
-import { ChromeChannel } from './types';
+
+import type { ChromeChannel } from './types';
 
 const newLineRegex = /\r?\n/;
 
@@ -11,7 +12,8 @@ function canAccess(file: string) {
   try {
     fs.accessSync(file);
     return true;
-  } catch (e) {
+  }
+  catch (e) {
     return false;
   }
 }
@@ -31,7 +33,8 @@ function findChromeExecutables(folder: string) {
     // See https://github.com/GoogleChrome/chrome-launcher/issues/46 for more context.
     try {
       execPaths = execSync(`grep -ER "${chromeExecRegex}" ${folder} | awk -F '=' '{print $2}'`);
-    } catch (e) {
+    }
+    catch (e) {
       execPaths = execSync(`grep -Er "${chromeExecRegex}" ${folder} | awk -F '=' '{print $2}'`);
     }
 
@@ -51,7 +54,7 @@ function sort(installations: string[], priorities: { regex: RegExp; weight: numb
   return (
     installations
       // assign priorities
-      .map(inst => {
+      .map((inst) => {
         for (const pair of priorities) {
           if (pair.regex.test(inst)) return { path: inst, weight: pair.weight };
         }
@@ -71,7 +74,8 @@ function uniq<T>(arr: T[]): T[] {
 function localPuppeteer() {
   try {
     require.resolve('puppeteer');
-  } catch {
+  }
+  catch {
     return;
   }
   const p = require('puppeteer');
@@ -79,10 +83,10 @@ function localPuppeteer() {
 }
 
 function darwin(canary = false): string | undefined {
-  const LSREGISTER =
-    '/System/Library/Frameworks/CoreServices.framework' +
-    '/Versions/A/Frameworks/LaunchServices.framework' +
-    '/Versions/A/Support/lsregister';
+  const LSREGISTER
+    = '/System/Library/Frameworks/CoreServices.framework'
+      + '/Versions/A/Frameworks/LaunchServices.framework'
+      + '/Versions/A/Support/lsregister';
   const grepexpr = canary ? 'google chrome canary' : 'google chrome';
   const result = execSync(`${LSREGISTER} -dump  | grep -i \'${grepexpr}\\?.app$\' | awk \'{$1=""; print $0}\'`);
 
@@ -114,17 +118,18 @@ function linux(_canary = false) {
     path.join(require('os').homedir(), '.local/share/applications/'),
     '/usr/share/applications/',
   ];
-  desktopInstallationFolders.forEach(folder => {
+  desktopInstallationFolders.forEach((folder) => {
     installations = installations.concat(findChromeExecutables(folder));
   });
 
   // Look for google-chrome(-stable) & chromium(-browser) executables by using the which command
   const executables = ['google-chrome-stable', 'google-chrome', 'chromium-browser', 'chromium'];
-  executables.forEach(executable => {
+  executables.forEach((executable) => {
     try {
       const chromePath = execFileSync('which', [executable], { stdio: 'pipe' }).toString().split(newLineRegex)[0];
       if (canAccess(chromePath)) installations.push(chromePath);
-    } catch (e) {
+    }
+    catch (e) {
       // Not installed.
     }
   });
@@ -156,7 +161,7 @@ function win32(canary = false) {
   );
 
   let result;
-  prefixes.forEach(prefix => {
+  prefixes.forEach((prefix) => {
     const chromePath = path.join(prefix!, suffix);
     if (canAccess(chromePath)) result = chromePath;
   });

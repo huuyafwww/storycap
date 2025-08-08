@@ -5,7 +5,7 @@ import type { Linter } from 'eslint';
 
 const config = define([
   () => ([{
-    ignores: ['**/*.?([cm])ts?(x)', '**/*.?([cm])js?(x)'],
+    ignores: ['**/*.?([cm])ts?(x)', '**/*.?([cm])js?(x)', "examples.*", "examples/**/*"],
     files: [
       '*.yaml',
       '*.yml',

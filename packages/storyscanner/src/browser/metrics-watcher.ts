@@ -1,5 +1,6 @@
-import type { Page, Metrics } from 'puppeteer-core';
 import { sleep } from '../async-utils';
+
+import type { Page, Metrics } from 'puppeteer-core';
 
 /**
  *

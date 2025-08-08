@@ -1,8 +1,10 @@
-import { BaseBrowser, BaseBrowserOptions } from './base-browser';
-import { Logger } from '../logger';
+import { BaseBrowser } from './base-browser';
 import { NoStoriesError, StoriesTimeoutError } from '../errors';
-import { Story } from '../story-types';
-import { StorybookConnection } from '../storybook-connection';
+import { Logger } from '../logger';
+
+import type { BaseBrowserOptions } from './base-browser';
+import type { Story } from '../story-types';
+import type { StorybookConnection } from '../storybook-connection';
 
 interface API {
   storyStore?: {
@@ -72,8 +74,8 @@ export class StoriesBrowser extends BaseBrowser {
 
     await this.page.waitForFunction(
       () =>
-        (window as ExposedWindow).__STORYBOOK_CLIENT_API__ ||
-        (window as ExposedWindow).__STORYBOOK_PREVIEW__?.storyStoreValue,
+        (window as ExposedWindow).__STORYBOOK_CLIENT_API__
+        || (window as ExposedWindow).__STORYBOOK_PREVIEW__?.storyStoreValue,
       {
         timeout: 60_000,
       },
@@ -96,11 +98,11 @@ export class StoriesBrowser extends BaseBrowser {
         return (api as PreviewAPI).storyStoreValue !== undefined;
       }
 
-      return new Promise<{ stories: Story[] | null; timeout: boolean }>(res => {
+      return new Promise<{ stories: Story[] | null; timeout: boolean }>((res) => {
         const getStories = (count = 0) => {
           const MAX_CONFIGURE_WAIT_COUNT = 4_000;
-          const api =
-            (window as ExposedWindow).__STORYBOOK_CLIENT_API__ || (window as ExposedWindow).__STORYBOOK_PREVIEW__;
+          const api
+            = (window as ExposedWindow).__STORYBOOK_CLIENT_API__ || (window as ExposedWindow).__STORYBOOK_PREVIEW__;
           if (api === undefined) return;
 
           // for Storybook v7
@@ -111,7 +113,8 @@ export class StoriesBrowser extends BaseBrowser {
           if (configuringV7store || configuringV8store) {
             if (count < MAX_CONFIGURE_WAIT_COUNT) {
               setTimeout(() => getStories(++count), 16);
-            } else {
+            }
+            else {
               res({ stories: null, timeout: true });
             }
             return;

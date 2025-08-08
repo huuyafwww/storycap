@@ -40,7 +40,8 @@ export async function runParallel<T, S>(tasks: () => AsyncGenerator<Task<T, S>, 
             try {
               results.push(await task(workers[i]));
               return await next();
-            } catch (error) {
+            }
+            catch (error) {
               rej(error);
             }
           }
@@ -146,7 +147,8 @@ export class Queue<R, T, S> {
     if (this.resolvers.length) {
       const resolver = this.resolvers.shift() as Resolver<R>;
       resolver.resolve(req);
-    } else {
+    }
+    else {
       this.futureRequests.push(Promise.resolve(req));
     }
   }
@@ -184,7 +186,8 @@ export class Queue<R, T, S> {
       try {
         const req = await futureRequest;
         yield this.createTask(req, controller);
-      } catch (reason) {
+      }
+      catch (reason) {
         if (reason !== cancelationToken) {
           throw reason;
         }

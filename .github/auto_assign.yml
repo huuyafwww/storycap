@@ -1,0 +1,8 @@
+addReviewers: false
+
+addAssignees: author
+
+reviewers:
+  - huuyafwww
+
+numberOfReviewers: 0
