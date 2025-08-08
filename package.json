@@ -23,7 +23,6 @@
     "build:watch": "turbo run build:watch",
     "clean": "turbo run clean && pnpm run clean:self",
     "clean:self": "rimraf node_modules .turbo __screenshots__ .eslintcache",
-    "e2e": "bash e2e.sh",
     "lint": "pnpm run lint:code && pnpm run lint:type",
     "lint:code": "eslint . --cache && turbo lint:code --parallel",
     "lint:code:fix": "eslint . --cache --fix && turbo lint:code:fix --parallel",

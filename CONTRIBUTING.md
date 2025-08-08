@@ -73,28 +73,3 @@ $ cd packages/<package-name>
 $ pnpm test
 ```
 
-## E2E test
-
-### All Storybook versions
-
-```sh
-$ ./e2e.sh
-```
-
-When the command exit successfully, check `__screenshots__` dir. There should be captured PNG files.
-
-### Single Storybook
-
-And `e2e.sh` also accepts a specific storybook example's name. For example:
-
-```sh
-$ ./e2e.sh examples/v4-simple
-```
-
-## Update documents' ToC and CLI usage section
-
-We insert ToC and CLI usage section to some Markdown files(e.g. README.md) using script. If you touch `*.md` files or add an option to CLI, please exec the following command when you stage the changes:
-
-```sh
-$ yarn doc
-```
