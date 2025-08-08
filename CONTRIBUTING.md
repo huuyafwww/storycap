@@ -20,7 +20,7 @@
 
 ## Directory structure
 
-This repository adopts mono-repo structure using Lerna.
+This repository adopts mono-repo structure using pnpm.
 
 Each package has the following role:
 
