@@ -3,7 +3,7 @@
   "version": "9.0.0",
   "description": "A Storybook addon, Save the screenshot image of your stories! via puppeteer.",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "main": "lib/index.js",
   "module": "lib-esm/index.js",
