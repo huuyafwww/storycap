@@ -8,12 +8,20 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "build:watch": {
+      "dependsOn": ["^build:watch"],
+      "outputs": ["dist/**"]
+    },
     "clean": {
       "cache": false
     },
     "lint:code": {
       "dependsOn": [],
       "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "lint:code:fix": {
+      "dependsOn": [],
+      "inputs": ["**/*.yml", "**/*.yaml", "**/*.ts", "**/*.js"]
     },
     "lint:type": {
       "dependsOn": [],
