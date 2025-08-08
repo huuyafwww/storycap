@@ -1,4 +1,6 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {}
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": [
+    "../../tsconfig.json",
+  ]
 }
