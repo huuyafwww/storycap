@@ -5,5 +5,5 @@ pre-commit:
   jobs:
     - name: Sort package.json
       run: pnpm run sort:package
-      glob: '{package.json,**/package.json}'
+      glob: "{package.json,**/package.json}"
       stage_fixed: true
