@@ -38,8 +38,7 @@ $ yarn bootstrap
 ## Lint and format
 
 ```sh
-$ yarn lint     # runs eslint
-$ yarn format   # runs prettier --write
+$ pnpm lint
 ```
 
 ## Build
