@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "remoteCache": {
+    "signature": true
+  },
+  "tasks": {
+    "clean": {
+      "cache": false
+    },
+    "lint:code": {
+      "dependsOn": [],
+      "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "lint:type": {
+      "dependsOn": [],
+      "inputs": ["**/*.ts", "**/*.tsx"]
+    }
+  }
+}
