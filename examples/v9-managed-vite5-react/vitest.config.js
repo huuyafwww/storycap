@@ -1,6 +1,7 @@
-import { defineConfig } from 'vitest/config';
+import { resolve } from 'path';
+
 import react from '@vitejs/plugin-react-swc';
-import { resolve } from 'path'
+import { defineConfig } from 'vitest/config';
 
 console.log('Loaded vitest config');
 export default defineConfig({
@@ -13,9 +14,9 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: 'storycapture', 
-        replacement: resolve(__dirname, 'node_modules', 'storycapture', 'lib')
-      }
-    ]
+        find: 'storycapture',
+        replacement: resolve(__dirname, 'node_modules', 'storycapture', 'lib'),
+      },
+    ],
   },
 });

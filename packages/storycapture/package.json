@@ -80,9 +80,9 @@
   },
   "devDependencies": {
     "@huuyafwww/eslint-config-common": "^1.3.0",
-    "@huuyafwww/eslint-config-javascript": "^1.0.0",
+    "@huuyafwww/eslint-config-javascript": "^1.0.1",
     "@huuyafwww/eslint-config-node": "^1.2.1",
-    "@huuyafwww/eslint-config-typescript": "^1.0.0",
+    "@huuyafwww/eslint-config-typescript": "^1.0.1",
     "@types/mkdirp": "^2.0.0",
     "@types/node": "^24.2.0",
     "@types/wait-on": "^5.3.4",
