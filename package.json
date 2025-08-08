@@ -19,7 +19,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build --parallel && pnpm doc && yarn copy:misc:storycapture",
+    "build": "turbo run build --parallel && pnpm doc && pnpm copy:misc:storycapture",
     "build:watch": "turbo run build:watch",
     "clean": "turbo run clean && pnpm run clean:self",
     "clean:self": "rimraf node_modules .turbo",
