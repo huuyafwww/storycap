@@ -85,7 +85,7 @@
     "@huuyafwww/eslint-config-typescript": "^1.0.0",
     "@types/mkdirp": "^2.0.0",
     "@types/node": "^24.2.0",
-    "@types/wait-on": "^5.0.0",
+    "@types/wait-on": "^5.3.4",
     "@types/yargs": "^17.0.0",
     "minimist": "1.2.8",
     "pkgroll": "^2.15.3",

@@ -45,7 +45,6 @@
     "cpy": "8.1.2",
     "cpy-cli": "5.0.0",
     "eslint": "^9.32.0",
-    "gh-pages": "6.3.0",
     "jiti": "^2.5.1",
     "lefthook": "^1.12.2",
     "pretty-quick": "4.0.0",
