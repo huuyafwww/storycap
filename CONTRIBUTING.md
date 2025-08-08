@@ -70,9 +70,7 @@ $ yarn test
 
 ```sh
 $ cd packages/<package-name>
-$ yarn test
-# or
-$ yarn run jest
+$ pnpm test
 ```
 
 ## E2E test

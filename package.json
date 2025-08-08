@@ -38,7 +38,7 @@
     "lint:type": "turbo lint:type --parallel",
     "regression": "reg-suit run",
     "sort:package": "sort-package-json 'package.json' 'packages/*/package.json'",
-    "test": "lerna run test",
+    "test": "turbo run test",
     "unlinkall": "lerna exec --parallel --bail=false yarn unlink",
     "version": "changeset",
     "version:apply": "changeset version",

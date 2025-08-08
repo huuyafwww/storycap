@@ -18,6 +18,10 @@
     "lint:type": {
       "dependsOn": [],
       "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "test": {
+      "dependsOn": [],
+      "inputs": ["**/*.ts", "**/*.tsx"]
     }
   }
 }

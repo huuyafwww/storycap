@@ -1,4 +1,6 @@
-import { runParallel, sleep, createExecutionService, Queue, Task } from './async-utils';
+import { runParallel, sleep, createExecutionService, Queue } from './async-utils';
+
+import type { Task } from './async-utils';
 
 const createWorker = (workerName: string | number) => ({
   async process(taskId: string, time: number = 0) {
@@ -50,7 +52,6 @@ describe(Queue, () => {
     queue.push('t0');
     runParallel(queue.tasks.bind(queue), [createWorker('w0')]).then(result => {
       expect(result).toEqual(['w0_t0', 'w0_t1']);
-      done();
     });
     sleep(5).then(() => queue.push('t1'));
   });
@@ -67,7 +68,6 @@ describe(Queue, () => {
     sleep(5).then(() => queue.close());
     runParallel(queue.tasks.bind(queue), [createWorker('w0')]).then(result => {
       expect(result).toEqual(['w0_t0']);
-      done();
     });
   });
 
@@ -81,7 +81,6 @@ describe(Queue, () => {
     queue.push('t0');
     runParallel(queue.tasks.bind(queue), [createWorker('w0')]).then(result => {
       expect(result).toEqual(['w0_t0', 'w0_t1']);
-      done();
     });
     sleep(1).then(() => queue.push('t1'));
     sleep(2).then(() => queue.close());
@@ -95,7 +94,6 @@ describe(createExecutionService, () => {
     });
     service.execute().then(result => {
       expect(result).toEqual(['w0_t0', 'w0_t1']);
-      done();
     });
     sleep(1).then(() => service.push('t1'));
     sleep(2).then(() => service.close());
