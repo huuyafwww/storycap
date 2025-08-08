@@ -44,9 +44,11 @@
   ],
   "scripts": {
     "build": "pkgroll --minify",
+    "build:watch": "pkgroll --watch",
     "clean": "rimraf node_modules dist .turbo lib \"*.tsbuildinfo\"",
     "jest": "jest",
     "lint:code": "eslint . --cache",
+    "lint:code:fix": "eslint . --cache --fix",
     "lint:type": "tsc --pretty --noEmit",
     "test": "npm run jest"
   },

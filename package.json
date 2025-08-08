@@ -20,6 +20,7 @@
   ],
   "scripts": {
     "build": "turbo run build --parallel && pnpm doc && yarn copy:misc:storycapture",
+    "build:watch": "turbo run build:watch",
     "clean": "turbo run clean && pnpm run clean:self",
     "clean:self": "rimraf node_modules .turbo",
     "copy:misc:storycapture": "cpy README.md CONTRIBUTING.md MIGRATION.md LICENSE packages/storycapture",
@@ -32,12 +33,16 @@
     "e2e": "bash e2e.sh",
     "linkall": "lerna exec --parallel yarn link",
     "lint": "pnpm run lint:code && pnpm run lint:type",
-    "lint:code": "eslint . --cache && turbo lint:code",
-    "lint:type": "turbo lint:type",
+    "lint:code": "eslint . --cache && turbo lint:code --parallel",
+    "lint:code:fix": "eslint . --cache --fix && turbo lint:code:fix --parallel",
+    "lint:type": "turbo lint:type --parallel",
     "regression": "reg-suit run",
     "sort:package": "sort-package-json 'package.json' 'packages/*/package.json'",
     "test": "lerna run test",
-    "unlinkall": "lerna exec --parallel --bail=false yarn unlink"
+    "unlinkall": "lerna exec --parallel --bail=false yarn unlink",
+    "version": "changeset",
+    "version:apply": "changeset version",
+    "version:publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.1",
@@ -61,8 +66,8 @@
     "reg-suit": "0.14.3",
     "rimraf": "^6.0.1",
     "sort-package-json": "^2.15.1",
-    "turbo": "^2.5.5",
     "tsx": "^4.20.3",
+    "turbo": "^2.5.5",
     "typescript": "^5.9.2"
   },
   "packageManager": "pnpm@10.9.0"

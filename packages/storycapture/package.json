@@ -62,8 +62,10 @@
   ],
   "scripts": {
     "build": "pkgroll --minify",
+    "build:watch": "pkgroll --watch",
     "clean": "rimraf node_modules dist .turbo lib lib-esm \"*.tsbuildinfo\"",
     "lint:code": "eslint . --cache",
+    "lint:code:fix": "eslint . --cache --fix",
     "lint:type": "tsc --pretty --noEmit",
     "test": "jest"
   },
