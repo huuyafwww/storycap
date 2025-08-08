@@ -19,7 +19,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build --parallel && yarn doc && yarn copy:misc",
+    "build": "turbo run build --parallel && pnpm doc && yarn copy:misc",
     "clean": "turbo run clean && pnpm run clean:self",
     "clean:self": "rimraf node_modules .turbo",
     "copy:misc": "yarn copy:misc:storycapture",
@@ -27,7 +27,7 @@
     "deploy:ci": "lerna run clean && yarn build && lerna publish --yes from-package --dist-tag \"$(node ./scripts/get-dist-tag.js)\"",
     "deploy:manual": "lerna run clean && yarn build && lerna publish",
     "deploy:pages": "gh-pages -d dist-pages -m \"[ci skip]\"",
-    "doc": "yarn doc:clihelp && yarn doc:toc",
+    "doc": "pnpm doc:clihelp && pnpm doc:toc",
     "doc:clihelp": "node scripts/cli-help.js",
     "doc:toc": "node scripts/add-toc.js",
     "e2e": "bash e2e.sh",
@@ -63,6 +63,7 @@
     "rimraf": "^6.0.1",
     "sort-package-json": "^2.15.1",
     "turbo": "^2.5.5",
+    "tsx": "^4.20.3",
     "typescript": "^5.9.2"
   },
   "packageManager": "pnpm@10.9.0"
