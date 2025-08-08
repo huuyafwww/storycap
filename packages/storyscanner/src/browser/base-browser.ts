@@ -76,7 +76,7 @@ export abstract class BaseBrowser {
    **/
   async boot() {
     const baseExecutablePath = this.opt.chromiumPath || this.opt.launchOptions?.executablePath;
-    const { executablePath } = await findChrome({
+    const { executablePath } = findChrome({
       executablePath: baseExecutablePath,
       channel: this.opt.chromiumChannel,
     });
@@ -108,7 +108,7 @@ export abstract class BaseBrowser {
       await sleep(50);
       await this.browser.close();
     }
-    catch (e) {
+    catch {
       // nothing to do
     }
   }

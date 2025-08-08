@@ -13,7 +13,7 @@ function canAccess(file: string) {
     fs.accessSync(file);
     return true;
   }
-  catch (e) {
+  catch {
     return false;
   }
 }
@@ -34,7 +34,7 @@ function findChromeExecutables(folder: string) {
     try {
       execPaths = execSync(`grep -ER "${chromeExecRegex}" ${folder} | awk -F '=' '{print $2}'`);
     }
-    catch (e) {
+    catch {
       execPaths = execSync(`grep -Er "${chromeExecRegex}" ${folder} | awk -F '=' '{print $2}'`);
     }
 
@@ -173,7 +173,7 @@ export type FindOptions = {
   channel?: ChromeChannel;
 };
 
-export async function findChrome(options: FindOptions) {
+export function findChrome(options: FindOptions) {
   if (options.executablePath) return { executablePath: options.executablePath, type: 'user' };
 
   const config = new Set<ChromeChannel>(options.channel ? [options.channel] : ['*']);

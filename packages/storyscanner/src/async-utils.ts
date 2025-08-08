@@ -205,8 +205,7 @@ export class Queue<R, T, S> {
   publishController(): QueueController<R> {
     return {
       push: this.push.bind(this),
-      close: async () => {
-        await Promise.resolve();
+      close: () => {
         this.close();
       },
     };

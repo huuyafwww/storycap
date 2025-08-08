@@ -68,7 +68,7 @@ export class StoriesBrowser extends BaseBrowser {
     // Note:
     // Don't wait fo this `goto` promise. Sometimes Chromimue emits timeout error and this navigation and causes whole screenshot process abortion.
     // For detail, see https://github.com/reg-viz/storycap/issues/896#issuecomment-2317248668
-    this.page.goto(
+    await this.page.goto(
       this.connection.url + '/iframe.html?selectedKind=story-crawler-kind&selectedStory=story-crawler-story',
     );
 

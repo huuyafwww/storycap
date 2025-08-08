@@ -1,5 +1,6 @@
 export * from './types';
-export type { StorybookConnectionOptions, StorybookConnection, StorybookConnectionStatus } from './storybook-connection';
+export type { StorybookConnectionOptions, StorybookConnectionStatus } from './storybook-connection';
+export { StorybookConnection } from './storybook-connection';
 export * from './browser';
 export * from './errors';
 export * from './logger';

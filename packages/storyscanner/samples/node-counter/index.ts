@@ -6,7 +6,7 @@ import {
   createExecutionService,
 } from 'storyscanner';
 
-(async function () {
+await (async function () {
   // Connect to the target Storybook server.
   const storybookUrl = 'https://storybookjs.netlify.app/vue-kitchen-sink';
   const connection = await new StorybookConnection({ storybookUrl }).connect();
