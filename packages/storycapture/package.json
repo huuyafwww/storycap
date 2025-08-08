@@ -30,7 +30,6 @@
     "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc --p tsconfig.build.cjs.json",
     "build:esm": "tsc --p tsconfig.build.esm.json",
-    "prepare": "yarn clean && yarn build",
     "test": "jest",
     "typedoc": "typedoc --out \"../../dist-pages/typedoc/storycapture\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
   },
