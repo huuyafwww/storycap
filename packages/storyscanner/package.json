@@ -48,8 +48,7 @@
     "jest": "jest",
     "lint:code": "eslint . --cache",
     "lint:type": "tsc --pretty --noEmit",
-    "test": "npm run jest",
-    "typedoc": "typedoc --out \"../../dist-pages/typedoc/storyscanner\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
+    "test": "npm run jest"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -93,7 +92,6 @@
     "jest": "29.7.0",
     "pkgroll": "^2.15.3",
     "ts-jest": "29.2.5",
-    "typedoc": "0.28.9",
     "typescript": "^5.9.2"
   },
   "engines": {

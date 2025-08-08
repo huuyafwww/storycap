@@ -20,7 +20,6 @@
   ],
   "scripts": {
     "build": "turbo run build --parallel && yarn doc && yarn copy:misc",
-    "build:pages": "yarn typedoc:build",
     "clean": "turbo run clean && pnpm run clean:self",
     "clean:self": "rimraf node_modules .turbo",
     "copy:misc": "yarn copy:misc:storycapture",
@@ -39,7 +38,6 @@
     "regression": "reg-suit run",
     "sort:package": "sort-package-json 'package.json' 'packages/*/package.json'",
     "test": "lerna run test",
-    "typedoc:build": "lerna run typedoc",
     "unlinkall": "lerna exec --parallel --bail=false yarn unlink"
   },
   "devDependencies": {

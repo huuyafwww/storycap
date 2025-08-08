@@ -65,8 +65,7 @@
     "clean": "rimraf node_modules dist .turbo lib lib-esm \"*.tsbuildinfo\"",
     "lint:code": "eslint . --cache",
     "lint:type": "tsc --pretty --noEmit",
-    "test": "jest",
-    "typedoc": "typedoc --out \"../../dist-pages/typedoc/storycapture\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
+    "test": "jest"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -120,7 +119,6 @@
     "pkgroll": "^2.15.3",
     "puppeteer": "23.11.1",
     "ts-jest": "29.2.5",
-    "typedoc": "0.28.9",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
