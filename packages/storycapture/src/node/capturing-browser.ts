@@ -1,28 +1,32 @@
 import { EventEmitter } from 'events';
 import path from 'path';
-import type { ConsoleMessage, Viewport } from 'puppeteer-core';
+
 import {
-  Story,
-  StorybookConnection,
   StoryPreviewBrowser,
   MetricsWatcher,
   ResourceWatcher,
   sleep,
   getDeviceDescriptors,
-} from 'storycrawler';
+} from 'storyscanner';
 
-import { MainOptions, RunMode } from './types';
-import { VariantKey, ScreenshotOptions, StrictScreenshotOptions, Exposed } from '../shared/types';
 import { ScreenshotTimeoutError, InvalidCurrentStoryStateError } from './errors';
 import {
   createBaseScreenshotOptions,
   mergeScreenshotOptions,
   extractVariantKeys,
   pickupWithVariantKey,
-  InvalidVariantKeysReason,
 } from '../shared/screenshot-options-helper';
-import { Logger } from './logger';
-import { FileSystem } from './file';
+
+import type { FileSystem } from './file';
+import type { Logger } from './logger';
+import type { MainOptions, RunMode } from './types';
+import type {
+  InvalidVariantKeysReason } from '../shared/screenshot-options-helper';
+import type { VariantKey, ScreenshotOptions, StrictScreenshotOptions, Exposed } from '../shared/types';
+import type { ConsoleMessage, Viewport } from 'puppeteer-core';
+import type {
+  Story,
+  StorybookConnection } from 'storyscanner';
 
 /**
  *
@@ -75,7 +79,7 @@ export class CapturingBrowser extends StoryPreviewBrowser {
   ) {
     super(connection, idx, opt, opt.logger);
     this.emitter = new EventEmitter();
-    this.emitter.on('error', e => {
+    this.emitter.on('error', (e) => {
       throw e;
     });
     this.baseScreenshotOptions = createBaseScreenshotOptions(opt);
@@ -228,11 +232,13 @@ export class CapturingBrowser extends StoryPreviewBrowser {
       if (opt.viewport.match(/^\d+$/)) {
         // For case such as `--viewport "800"`.
         nextViewport = { width: +opt.viewport, height: 600 };
-      } else if (opt.viewport.match(/^\d+x\d+$/)) {
+      }
+      else if (opt.viewport.match(/^\d+x\d+$/)) {
         // For case such as `--viewport "800x600"`.
         const [w, h] = opt.viewport.split('x');
         nextViewport = { width: +w, height: +h };
-      } else {
+      }
+      else {
         // Handle as Puppeteer device descriptor.
         const hit = getDeviceDescriptors().find(d => d.name === opt.viewport);
         if (!hit) {
@@ -247,7 +253,8 @@ export class CapturingBrowser extends StoryPreviewBrowser {
         }
         nextViewport = hit.viewport;
       }
-    } else {
+    }
+    else {
       nextViewport = opt.viewport;
     }
 
@@ -259,13 +266,14 @@ export class CapturingBrowser extends StoryPreviewBrowser {
 
       // Setting isMobile or hasTouch properties will reload the page.
       // See also https://github.com/puppeteer/puppeteer/blob/main/docs/api/puppeteer.viewport.md
-      const willBeReloaded =
-        nextViewport.isMobile !== this.viewport?.isMobile || nextViewport.hasTouch !== this.viewport?.hasTouch;
+      const willBeReloaded
+        = nextViewport.isMobile !== this.viewport?.isMobile || nextViewport.hasTouch !== this.viewport?.hasTouch;
       this.viewport = nextViewport;
       if (willBeReloaded || this.opt.reloadAfterChangeViewport) {
         this.processedStories.delete(this.currentRequestId);
         await Promise.all([this.reload(), this.waitForOptionsFromBrowser()]);
-      } else {
+      }
+      else {
         await sleep(this.opt.viewportDelay);
       }
     }
@@ -331,7 +339,8 @@ export class CapturingBrowser extends StoryPreviewBrowser {
         this.logger.warn(
           `Invalid variants. The variant key '${reason.to}' does not exist(story id: ${this.currentStory!.id}).`,
         );
-      } else if (reason.type === 'circular') {
+      }
+      else if (reason.type === 'circular') {
         this.logger.warn(
           `Invalid variants. Reference ${reason.refs.join(' -> ')} is circular(story id: ${this.currentStory!.id}).`,
         );
@@ -387,7 +396,8 @@ export class CapturingBrowser extends StoryPreviewBrowser {
             logger.log(niceMessage);
             break;
         }
-      } else {
+      }
+      else {
         logger.debug(niceMessage);
       }
     }
@@ -415,7 +425,8 @@ export class CapturingBrowser extends StoryPreviewBrowser {
           // End this capturing process as failure of timeout if emitter don't resolve screenshot options.
           return { buffer: null, succeeded: false, variantKeysToPush: [], defaultVariantSuffix: '' };
         }
-      } else {
+      }
+      else {
         await sleep(this.opt.delay);
         await this.waitBrowserMetricsStable('preEmit');
         // Use only `baseScreenshotOptions` when simple mode.
@@ -481,7 +492,8 @@ export class CapturingBrowser extends StoryPreviewBrowser {
         variantKeysToPush,
         defaultVariantSuffix,
       };
-    } finally {
+    }
+    finally {
       this.page.off('console', onConsoleLog);
 
       if (trace) {

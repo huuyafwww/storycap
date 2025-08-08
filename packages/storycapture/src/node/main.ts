@@ -1,5 +1,5 @@
 import { isMatch } from 'nanomatch';
-import { StorybookConnection, StoriesBrowser, Story, sleep, ChromiumNotFoundError } from 'storycrawler';
+import { StorybookConnection, StoriesBrowser, Story, sleep, ChromiumNotFoundError } from 'storyscanner';
 import { CapturingBrowser } from './capturing-browser';
 import { MainOptions, RunMode } from './types';
 import { FileSystem } from './file';

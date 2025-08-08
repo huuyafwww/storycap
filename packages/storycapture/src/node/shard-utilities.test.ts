@@ -1,4 +1,4 @@
-import { Story } from 'storycrawler';
+import { Story } from 'storyscanner';
 import { parseShardOptions, sortStories, shardStories } from './shard-utilities';
 
 describe(parseShardOptions, () => {

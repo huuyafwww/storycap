@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
+import { time, getDeviceDescriptors } from 'storyscanner';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { time, ChromeChannel, getDeviceDescriptors } from 'storycrawler';
-import { main } from './main';
-import { MainOptions, ShardOptions } from './types';
+
 import { Logger } from './logger';
+import { main } from './main';
 import { parseShardOptions } from './shard-utilities';
+
+import type { MainOptions, ShardOptions } from './types';
+import type { ChromeChannel } from 'storyscanner';
 
 function showDevices(logger: Logger) {
   getDeviceDescriptors().map(device => logger.log(device.name, JSON.stringify(device.viewport)));
@@ -34,7 +37,7 @@ async function createOptions(): Promise<MainOptions> {
       forwardConsoleLogs: {
         boolean: true,
         default: false,
-        description: "Forward in-page console logs to the user's console.",
+        description: 'Forward in-page console logs to the user\'s console.',
       },
       serverCmd: { string: true, default: '', description: 'Command line to launch Storybook server.' },
       serverTimeout: { number: true, default: 60_000, description: 'Timeout [msec] for starting Storybook server.' },
@@ -61,7 +64,7 @@ async function createOptions(): Promise<MainOptions> {
         default: false,
         description: 'Whether to reload after viewport changed.',
       },
-      stateChangeDelay: { number: true, default: 0, description: "Delay time [msec] after changing element's state." },
+      stateChangeDelay: { number: true, default: 0, description: 'Delay time [msec] after changing element\'s state.' },
       listDevices: { boolean: true, default: false, description: 'List available device descriptors.' },
       chromiumChannel: {
         alias: 'C',
@@ -87,7 +90,8 @@ async function createOptions(): Promise<MainOptions> {
 
   if (!argv._.length) {
     storybookUrl = 'http://localhost:9001';
-  } else {
+  }
+  else {
     storybookUrl = `${argv._[0]}`;
   }
 
@@ -133,7 +137,8 @@ async function createOptions(): Promise<MainOptions> {
       headless: process.env['STORYCAP_SHOW'] !== 'enabled',
       ...JSON.parse(puppeteerLaunchConfigString),
     };
-  } catch (error) {
+  }
+  catch (error) {
     logger.error(error);
     throw error;
   }
@@ -141,7 +146,8 @@ async function createOptions(): Promise<MainOptions> {
   let shardOptions: ShardOptions;
   try {
     shardOptions = parseShardOptions(shard);
-  } catch (error) {
+  }
+  catch (error) {
     logger.error(error);
     throw error;
   }
@@ -193,11 +199,12 @@ async function cli() {
       );
       process.exit(0);
     })
-    .catch(error => {
+    .catch((error) => {
       if (error instanceof Error) {
         logger.error(error.message);
         logger.errorStack(error.stack);
-      } else {
+      }
+      else {
         logger.error(error);
       }
       process.exit(1);

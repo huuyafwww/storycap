@@ -1,4 +1,4 @@
-import { Story, createExecutionService, time } from 'storycrawler';
+import { Story, createExecutionService, time } from 'storyscanner';
 import { CapturingBrowser } from './capturing-browser';
 import { FileSystem } from './file';
 import { Logger } from './logger';
