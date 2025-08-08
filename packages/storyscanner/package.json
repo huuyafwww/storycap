@@ -63,9 +63,9 @@
     "@huuyafwww/eslint-config-typescript": "^1.0.0",
     "@types/node": "^24.2.0",
     "@types/wait-on": "^5.3.4",
-    "vite-tsconfig-paths": "^5.1.4",
     "pkgroll": "^2.15.3",
     "typescript": "^5.9.2",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
   "engines": {

@@ -74,8 +74,8 @@
     "mkdirp": "^3.0.0",
     "nanomatch": "^1.2.13",
     "puppeteer-core": "^24.16.0",
-    "storyscanner": "workspace:*",
     "sanitize-filename": "^1.6.3",
+    "storyscanner": "workspace:*",
     "yargs": "^17.0.0"
   },
   "devDependencies": {
@@ -89,9 +89,9 @@
     "@types/yargs": "^17.0.0",
     "minimist": "1.2.8",
     "pkgroll": "^2.15.3",
-    "vite-tsconfig-paths": "^5.1.4",
     "puppeteer": "23.11.1",
     "typescript": "^5.9.2",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
   "peerDependencies": {

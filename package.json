@@ -28,7 +28,7 @@
     "lint:code:fix": "eslint . --cache --fix && turbo lint:code:fix --parallel",
     "lint:type": "turbo lint:type --parallel",
     "regression": "reg-suit run",
-    "sort:package": "sort-package-json 'package.json' 'packages/*/package.json'",
+    "sort:package": "sort-package-json 'package.json' 'packages/*/package.json' 'examples/*/package.json'",
     "test": "turbo run test",
     "version": "changeset",
     "version:apply": "changeset version",
