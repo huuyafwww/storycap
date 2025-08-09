@@ -1,5 +1,3 @@
-import { resolve } from 'path';
-
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vitest/config';
 
@@ -10,13 +8,5 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './setupFile.js',
-  },
-  resolve: {
-    alias: [
-      {
-        find: 'storycapture',
-        replacement: resolve(__dirname, 'node_modules', 'storycapture', 'lib'),
-      },
-    ],
   },
 });

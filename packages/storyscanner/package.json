@@ -34,7 +34,6 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "typings": "lib/index.d.ts",
   "files": [
     "dist",
     "CHANGELOG.md",
@@ -53,6 +52,7 @@
     "test:watch": "vitest run --watch"
   },
   "dependencies": {
+    "chalk": "^5.5.0",
     "puppeteer-core": "^24.16.0",
     "wait-on": "^8.0.4"
   },

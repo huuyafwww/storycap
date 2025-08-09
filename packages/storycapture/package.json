@@ -46,10 +46,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "typings": "lib/index.d.ts",
-  "bin": {
-    "storycapture": "lib/node/cli.js"
-  },
+  "bin": "./dist/node/cli.js",
   "files": [
     "dist",
     "assets",
@@ -63,7 +60,7 @@
   "scripts": {
     "build": "pkgroll --minify",
     "build:watch": "pkgroll --watch",
-    "clean": "rimraf node_modules dist .turbo lib lib-esm \"*.tsbuildinfo\"",
+    "clean": "rimraf node_modules dist .turbo lib-esm \"*.tsbuildinfo\"",
     "lint:code": "eslint . --cache",
     "lint:code:fix": "eslint . --cache --fix",
     "lint:type": "tsc --pretty --noEmit",
@@ -76,6 +73,7 @@
     "puppeteer-core": "^24.16.0",
     "sanitize-filename": "^1.6.3",
     "storyscanner": "workspace:*",
+    "storybook": "^9.0.0",
     "yargs": "^17.0.0"
   },
   "devDependencies": {

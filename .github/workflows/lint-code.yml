@@ -24,9 +24,7 @@ jobs:
           path: |
             packages/storycapture/.eslintcache
             packages/storyscanner/.eslintcache
-            examples/v9-managed-react/.eslintcache
             examples/v9-managed-vite5-react/.eslintcache
-            examples/v9-simple-react/.eslintcache
           key: ${{ runner.os }}-eslint-cache-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-eslint-cache-
