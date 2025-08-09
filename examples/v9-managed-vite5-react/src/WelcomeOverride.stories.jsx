@@ -1,4 +1,5 @@
 import { linkTo } from '@storybook/addon-links';
+
 import { Welcome } from './Welcome';
 
 export default {

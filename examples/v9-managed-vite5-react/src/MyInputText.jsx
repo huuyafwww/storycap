@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const MyInputText = () => (
-  <input className='my-input-text' type='text' placeholder='fill me' />
+  <input className="my-input-text" type="text" placeholder="fill me" />
 );
 
-export default MyInputText
+export default MyInputText;
