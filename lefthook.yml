@@ -7,3 +7,7 @@ pre-commit:
       run: pnpm run sort:package
       glob: "{package.json,**/package.json}"
       stage_fixed: true
+
+    - name: Test code
+      run: pnpm run test
+      glob: "{**/*.test.ts,**/*.test.tsx}"
