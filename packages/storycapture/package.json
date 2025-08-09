@@ -68,7 +68,6 @@
     "test:watch": "vitest run --watch"
   },
   "dependencies": {
-    "mkdirp": "^3.0.0",
     "nanomatch": "^1.2.13",
     "puppeteer-core": "^24.16.0",
     "sanitize-filename": "^1.6.3",
@@ -81,13 +80,11 @@
     "@huuyafwww/eslint-config-javascript": "^1.0.1",
     "@huuyafwww/eslint-config-node": "^1.2.1",
     "@huuyafwww/eslint-config-typescript": "^1.0.1",
-    "@types/mkdirp": "^2.0.0",
     "@types/node": "^24.2.0",
     "@types/wait-on": "^5.3.4",
     "@types/yargs": "^17.0.0",
-    "minimist": "1.2.8",
     "pkgroll": "^2.15.3",
-    "puppeteer": "23.11.1",
+    "puppeteer": "^24.16.0",
     "typescript": "^5.9.2",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"

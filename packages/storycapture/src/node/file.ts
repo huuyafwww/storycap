@@ -1,7 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { MainOptions } from './types';
+
 import sanitize from 'sanitize-filename';
+
+import type { MainOptions } from './types';
 
 export class FileSystem {
   constructor(private opt: MainOptions) {}
@@ -10,11 +12,11 @@ export class FileSystem {
     const name = this.opt.flat
       ? sanitize((kind + '_' + story).replace(/\//g, '_'))
       : kind
-          .split('/')
-          .map(k => sanitize(k))
-          .join('/') +
-        '/' +
-        sanitize(story);
+        .split('/')
+        .map(k => sanitize(k))
+        .join('/')
+        + '/'
+        + sanitize(story);
     const filePath = path.join(this.opt.outDir, name + (suffix.length ? `_${suffix.join('_')}` : '') + extension);
 
     return filePath;

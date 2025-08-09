@@ -12,9 +12,8 @@
     "lint:code:fix": "eslint . --cache --fix",
     "lint:type": "tsc --pretty --noEmit",
     "preview": "vite preview",
-    "prestorybook": "../../scripts/e2e-prestorybook.js .",
     "storybook": "storybook dev -p 6006",
-    "storycapture:all": "pnpm prestorybook && storycapture --verbose --serverTimeout 100000 --serverCmd \"storybook dev -p 9009\" \"http://localhost:9009\"",
+    "storycapture:all": "storycapture --verbose --serverTimeout 100000 --serverCmd \"storybook dev -p 9009\" \"http://localhost:9009\"",
     "test": "vitest run",
     "test:watch": "vitest run --watch"
   },
