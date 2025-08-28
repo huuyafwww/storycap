@@ -1,6 +1,8 @@
+import { browser } from '@huuyafwww/eslint-config-browser';
 import { common } from '@huuyafwww/eslint-config-common';
 import { javascript } from '@huuyafwww/eslint-config-javascript';
-import { node } from '@huuyafwww/eslint-config-node';
+import { react } from '@huuyafwww/eslint-config-react';
+import { storybook } from '@huuyafwww/eslint-config-storybook';
 import { typescript } from '@huuyafwww/eslint-config-typescript';
 import { define } from '@praha/eslint-config-definer';
 
@@ -10,7 +12,9 @@ const config = define([
   common,
   javascript,
   typescript,
-  node,
+  browser,
+  react,
+  storybook,
 ]);
 
 export default config({

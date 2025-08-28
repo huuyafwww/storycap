@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ImageButton = () => (
   <button style={{
     width: 48,

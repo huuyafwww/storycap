@@ -1,6 +1,5 @@
 import { composeStories } from '@storybook/react';
 import { render } from '@testing-library/react';
-import React from 'react';
 
 import * as stories from './MyButton.stories'; // import all stories from the stories file
 

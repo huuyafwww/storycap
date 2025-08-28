@@ -1,4 +1,3 @@
-import React from 'react';
 import { action } from 'storybook/actions';
 import { isScreenshot } from 'storycapture';
 
