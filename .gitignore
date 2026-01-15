@@ -81,7 +81,6 @@ typings/
 *.tsbuildinfo
 .DS_Store
 lib/
-lib-esm/
 __screenshot__
 __screenshots__
 .reg

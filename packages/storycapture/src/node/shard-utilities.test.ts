@@ -1,5 +1,6 @@
+import { describe, it, expect } from 'vitest';
 import { Story } from 'storycrawler';
-import { parseShardOptions, sortStories, shardStories } from './shard-utilities';
+import { parseShardOptions, sortStories, shardStories } from './shard-utilities.js';
 
 describe(parseShardOptions, () => {
   it('should accept correct arguments', () => {

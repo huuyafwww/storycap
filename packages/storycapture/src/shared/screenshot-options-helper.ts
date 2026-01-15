@@ -1,4 +1,4 @@
-import { VariantKey, StrictScreenshotOptions, ScreenshotOptions, ScreenshotOptionFragments } from '../shared/types';
+import { VariantKey, StrictScreenshotOptions, ScreenshotOptions, ScreenshotOptionFragments } from './types.js';
 
 const defaultScreenshotOptions = {
   waitAssets: true,

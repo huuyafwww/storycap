@@ -1,0 +1,37 @@
+{
+  "name": "v10-managed-react",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clear": "rimraf __screenshots__",
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build --test",
+    "prestorybook": "../../scripts/e2e-prestorybook.js .",
+    "storycapture:all": "yarn prestorybook && storycapture --verbose --serverTimeout 100000 --serverCmd \"storybook dev -p 9009\" \"http://localhost:9009\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-links": "^10.0.0",
+    "@storybook/react": "^10.0.0",
+    "@storybook/react-vite": "^10.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "jsdom": "^24.0.0",
+    "prop-types": "^15.8.1",
+    "rimraf": "^5.0.0",
+    "storybook": "^10.0.0",
+    "vite": "^7.0.0",
+    "vitest": "^4.0.0"
+  }
+}

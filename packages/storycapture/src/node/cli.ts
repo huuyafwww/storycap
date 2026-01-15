@@ -1,12 +1,19 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { time, ChromeChannel, getDeviceDescriptors } from 'storycrawler';
-import { main } from './main';
-import { MainOptions, ShardOptions } from './types';
-import { Logger } from './logger';
-import { parseShardOptions } from './shard-utilities';
+import { main } from './main.js';
+import { MainOptions, ShardOptions } from './types.js';
+import { Logger } from './logger.js';
+import { parseShardOptions } from './shard-utilities.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = JSON.parse(readFileSync(join(__dirname, '../../package.json'), 'utf-8'));
 
 function showDevices(logger: Logger) {
   getDeviceDescriptors().map(device => logger.log(device.name, JSON.stringify(device.viewport)));
@@ -16,7 +23,7 @@ async function createOptions(): Promise<MainOptions> {
   const setting = yargs(hideBin(process.argv))
     .locale('en')
     .wrap(120)
-    .version(require('../../package.json').version)
+    .version(packageJson.version)
     .usage('usage: storycapture [options] storybook_url')
     .options({
       outDir: { string: true, alias: 'o', default: '__screenshots__', description: 'Output directory.' },

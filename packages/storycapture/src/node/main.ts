@@ -1,10 +1,10 @@
-import { isMatch } from 'nanomatch';
+import micromatch from 'micromatch';
 import { StorybookConnection, StoriesBrowser, Story, sleep, ChromiumNotFoundError } from 'storycrawler';
-import { CapturingBrowser } from './capturing-browser';
-import { MainOptions, RunMode } from './types';
-import { FileSystem } from './file';
-import { createScreenshotService } from './screenshot-service';
-import { shardStories, sortStories } from './shard-utilities';
+import { CapturingBrowser } from './capturing-browser.js';
+import { MainOptions, RunMode } from './types.js';
+import { FileSystem } from './file.js';
+import { createScreenshotService } from './screenshot-service.js';
+import { shardStories, sortStories } from './shard-utilities.js';
 
 async function detectRunMode(storiesBrowser: StoriesBrowser, opt: MainOptions) {
   // Reuse `storiesBrowser` instance to avoid cost of re-launching another Puppeteer process.
@@ -30,8 +30,8 @@ async function bootCapturingBrowserAsWorkers(connection: StorybookConnection, op
 
 function filterStories(flatStories: Story[], include: string[], exclude: string[]): Story[] {
   const conbined = flatStories.map(s => ({ ...s, name: s.kind + '/' + s.story }));
-  const included = include.length ? conbined.filter(s => include.some(rule => isMatch(s.name, rule))) : conbined;
-  const excluded = exclude.length ? included.filter(s => !exclude.some(rule => isMatch(s.name, rule))) : included;
+  const included = include.length ? conbined.filter(s => include.some(rule => micromatch.isMatch(s.name, rule))) : conbined;
+  const excluded = exclude.length ? included.filter(s => !exclude.some(rule => micromatch.isMatch(s.name, rule))) : included;
   return excluded;
 }
 
@@ -56,7 +56,7 @@ export async function main(mainOptions: MainOptions) {
   const allStories = await storiesBrowser.getStories();
   logger.debug('Ended to fetch stories metadata.');
 
-  // Mode(simple / managed) deteciton.
+  // Mode(simple / managed) detection.
   const mode = await detectRunMode(storiesBrowser, mainOptions);
   storiesBrowser.close();
 

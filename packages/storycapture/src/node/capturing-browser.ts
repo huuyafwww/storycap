@@ -1,6 +1,10 @@
 import { EventEmitter } from 'events';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import type { ConsoleMessage, Viewport } from 'puppeteer-core';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import {
   Story,
   StorybookConnection,
@@ -11,18 +15,18 @@ import {
   getDeviceDescriptors,
 } from 'storycrawler';
 
-import { MainOptions, RunMode } from './types';
-import { VariantKey, ScreenshotOptions, StrictScreenshotOptions, Exposed } from '../shared/types';
-import { ScreenshotTimeoutError, InvalidCurrentStoryStateError } from './errors';
+import { MainOptions, RunMode } from './types.js';
+import { VariantKey, ScreenshotOptions, StrictScreenshotOptions, Exposed } from '../shared/types.js';
+import { ScreenshotTimeoutError, InvalidCurrentStoryStateError } from './errors.js';
 import {
   createBaseScreenshotOptions,
   mergeScreenshotOptions,
   extractVariantKeys,
   pickupWithVariantKey,
   InvalidVariantKeysReason,
-} from '../shared/screenshot-options-helper';
-import { Logger } from './logger';
-import { FileSystem } from './file';
+} from '../shared/screenshot-options-helper.js';
+import { Logger } from './logger.js';
+import { FileSystem } from './file.js';
 
 /**
  *

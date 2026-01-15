@@ -3,8 +3,10 @@
 [storybook]: https://github.com/storybooks/storybook
 [puppeteer]: https://github.com/GoogleChrome/puppeteer
 
-This package was created to support v9 of storybook with [storycap](https://github.com/reg-viz/storycap).
+This package was created to support v10 of storybook with [storycap](https://github.com/reg-viz/storycap).
 Special thanks to the author of the [storycap](https://github.com/reg-viz/storycap).
+
+> **Note**: This version requires Node.js >=20.19 and Storybook v10.
 
 [![npm](https://img.shields.io/npm/v/storycapture.svg?style=flat-square)](https://www.npmjs.com/package/storycapture)
 
@@ -110,7 +112,7 @@ First, add `storycapture` to your Storybook config file:
 ```js
 /* .storybook/main.js */
 
-module.exports = {
+export default {
   stories: ['../src/**/*.stories.@(js|mdx)'],
   addons: [
     '@storybook/addon-actions',
@@ -127,14 +129,13 @@ Next, use `withScreenshot` decorator to tell how Storycapture captures your stor
 
 import { withScreenshot } from 'storycapture';
 
-export const decorators = [
-  withScreenshot, // Registration the decorator is required
-];
-
-export const parameters = {
-  // Global parameter is optional.
-  screenshot: {
-    // Put global screenshot parameters(e.g. viewport)
+export default {
+  decorators: [withScreenshot], // Registration the decorator is required
+  parameters: {
+    // Global parameter is optional.
+    screenshot: {
+      // Put global screenshot parameters(e.g. viewport)
+    },
   },
 };
 ```
@@ -335,9 +336,9 @@ Options:
       --forwardConsoleLogs         Forward in-page console logs to the user's console.        [boolean] [default: false]
       --serverCmd                  Command line to launch Storybook server.                       [string] [default: ""]
       --serverTimeout              Timeout [msec] for starting Storybook server.               [number] [default: 60000]
-      --shard                      The sharding options for this run. In the format <shardNumber>/<totalShards>.
-                                   <shardNumber> is a number between 1 and <totalShards>. <totalShards> is the total
-                                   number of computers working.                                [string] [default: "1/1"]
+      --shard                      The sharding options for this run. In the format <shardNumber>/<totalShards>. <shardN
+                                   umber> is a number between 1 and <totalShards>. <totalShards> is the total number of
+                                   computers working.                                          [string] [default: "1/1"]
       --captureTimeout             Timeout [msec] for capture a story.                          [number] [default: 5000]
       --captureMaxRetryCount       Number of count to retry to capture.                            [number] [default: 3]
       --metricsWatchRetryCount     Number of count to retry until browser metrics stable.       [number] [default: 1000]
@@ -452,7 +453,7 @@ Use [regviz/node-xcb](https://cloud.docker.com/u/regviz/repository/docker/regviz
 Or create your Docker base image such as:
 
 ```Dockerfile
-FROM node:18
+FROM node:20
 
 RUN apt-get update -y \
     && apt-get install -yq \
@@ -572,9 +573,9 @@ You can change search channel with `--chromiumChannel` option or set executable 
 Storycapture is tested with the followings versions:
 
 - Simple mode:
-  - [x] Storybook v9.x
+  - [x] Storybook v10.x
 - Managed mode:
-  - [x] Storybook v9.x
+  - [x] Storybook v10.x
 
 See also packages in `examples` directory.
 

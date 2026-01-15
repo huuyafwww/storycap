@@ -73,7 +73,7 @@ $ yarn test
 $ cd packages/<package-name>
 $ yarn test
 # or
-$ yarn run jest
+$ yarn run vitest
 ```
 
 ## E2E test
